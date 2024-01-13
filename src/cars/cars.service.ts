@@ -9,12 +9,8 @@ export class CarsService {
   constructor(private prisma: PrismaService) { }
 
   create(createCarDTO: CreateCarDto) {
-    const data: Prisma.CarCreateInput = {
-      ...createCarDTO,
-    };
-
     return this.prisma.car.create({
-      data,
+      data: createCarDTO,
     })
   }
 
@@ -29,13 +25,9 @@ export class CarsService {
   }
 
   update(id: string, updateCarDTO: UpdateCarDto) {
-    const data: Prisma.CarUpdateInput = {
-      ...updateCarDTO,
-    };
-
     return this.prisma.car.update({
       where: { id },
-      data,
+      data: updateCarDTO,
     });
   }
 
